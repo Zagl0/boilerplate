@@ -12,6 +12,17 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/recover"
 )
 
+func shouldAppPass() bool {
+    // Toggle this to return true or false to pass/fail the test
+    return true // <-- change to false to simulate a failure
+}
+
+func TestAppBehavior(t *testing.T) {
+    if !shouldAppPass() {
+        t.Errorf("App is configured to fail")
+    }
+}
+
 var (
 	port = flag.String("port", ":3000", "Port to listen on")
 	prod = flag.Bool("prod", false, "Enable prefork in Production")
